@@ -1,7 +1,7 @@
 (ns simple-frame.core
   (:require [reagent.core :as reagent]
             [re-frame.core :as re-frame]
-            [simple-frame.events :as events]
+            [re-view.re-frame-simple :as db]
             [simple-frame.views :as views]
             [simple-frame.config :as config]))
 
@@ -17,10 +17,9 @@
 
 
 (defn mount-root []
-  (reagent/render [views/main-panel]
-                  (.getElementById js/document "app")))
+  (reagent/render [views/main-panel] (.getElementById js/document "app")))
 
 (defn ^:export init []
-  (re-frame/dispatch-sync [::events/initialize-db])
+  (db/assoc! :name "shadow-cljs, re-frame and re-frame-simple")
   (dev-setup)
   (mount-root))
