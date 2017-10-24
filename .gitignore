@@ -1,0 +1,6 @@
+/*.log
+/target
+/*-init.clj
+/public/js/*
+/node_modules
+out

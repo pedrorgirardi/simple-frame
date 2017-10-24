@@ -1,0 +1,25 @@
+;; shadow-cljs configuration
+{:source-paths
+ ["src"]
+
+ :dependencies
+ [[reagent "0.8.0-alpha2"]
+ [re-frame "0.10.2"]]
+
+ :builds
+ {:app {:target :browser
+        :output-dir "public/js"
+        :asset-path "/js"
+
+        :modules
+        {:main ;; <- becomes public/js/main.js
+         {:entries [simple-frame.core]}}
+
+        :devtools
+        ;; before live-reloading any code call this function
+        {:before-load simple-frame.core/clear-subscription-cache
+         ;; after live-reloading finishes call this function
+         :after-load simple-frame.core/mount-root
+         ;; serve the public directory over http at port 8020
+         :http-root "public"
+         :http-port 8020}}}}
