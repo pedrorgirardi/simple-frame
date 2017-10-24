@@ -5,7 +5,9 @@
  :dependencies
  [[reagent "0.8.0-alpha2"]
   [re-frame "0.10.2"]
-  [re-view/re-frame-simple "0.1.0"]]
+  [re-view/re-frame-simple "0.1.0"]
+  [binaryage/devtools "0.9.4"]
+  [re-frisk "0.5.0"]]
 
  :builds
  {:app {:target :browser
@@ -23,4 +25,5 @@
          :after-load simple-frame.core/mount-root
          ;; serve the public directory over http at port 8020
          :http-root "public"
-         :http-port 8020}}}}
+         :http-port 8020
+         :preloads  [devtools.preload re-frisk.preload]}}}}
